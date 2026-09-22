@@ -22,26 +22,26 @@ From a clean checkout:
 **Your design** — a short description of the technologies you chose and how the pieces fit together
 
 **Frontend — React** 
-React + Recharts
+- React + Recharts
 
-Recharts gives the zoom/pan on the time series through its `Brush` component, so there is 
+- Recharts gives the zoom/pan on the time series through its `Brush` component, so there is 
 no hand written interaction code
 
-It is a single-page app with no routing. t
+- It is a single-page app with no routing.
 
-The user uploads a weights file, and the same screen renders the holdings table, the 
+- The user uploads a weights file, and the same screen renders the holdings table, the 
 reconstructed price time series, and the bar chart of the five largest holdings.
 
 **Backend — Python + FastAPI + pandas.** 
-FastAPI gives file upload handling (`UploadFile`), and request validation.
+- FastAPI gives file upload handling (`UploadFile`), and request validation.
 
-There is one endpoint, `POST /api/analyze`: it takes the uploaded weights and returns the holdings,
+- There is one endpoint, `POST /api/analyze`: it takes the uploaded weights and returns the holdings,
 the reconstructed series, the top-five holdings, and any data warnings
 
-The uploaded CSV is required to have `name` and `weight` columns anything else comes back 
+- The uploaded CSV is required to have `name` and `weight` columns anything else comes back 
 as HTTP 400 Bad Request
 
-I put the calculation on the server rather than in the browser so the formula has 
+- I put the calculation on the server rather than in the browser so the formula has 
 one testable implementation and the frontend stays a thin view layer.
 
 
