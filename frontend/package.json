@@ -1,0 +1,38 @@
+{
+  "name": "etf-reconstruction",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Single-page app that reconstructs an ETF's price from its holdings (React frontend + FastAPI backend).",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "recharts": "^2.12.7"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "setup:backend": "cd ../backend && pip install -r requirements.txt",
+    "postinstall": "npm run setup:backend",
+    "dev": "concurrently -k -n backend,frontend -c blue,green \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd ../backend && fastapi dev app.py",
+    "dev:frontend": "react-scripts start"
+  },
+  "proxy": "http://localhost:8000",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
